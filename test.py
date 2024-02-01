@@ -1,57 +1,66 @@
-# # def create(n):
-# #     order = [] #sourcery skip
-# #     circle = list(range(1,n+1))
-# #     i = 1
-# #     while i < len(circle):
-# #         order.append(circle[i])
-# #         circle.pop(i)
-# #         i += 1
-# #     else:
-# #         for index in range(len(circle)):
-# #             if index == len(circle):
-# #                 order.extend(circle)
-# #                 break
-# #             order.append(circle[index])
-# #             circle.pop(index)
-# #     return order
+def create(n): # sourcery skip
+    order = [] 
+    circle = list(range(1,n+1))
+    cir = circle.copy()
 
-# # if __name__ == "__main__":
-# #     print(create(1)) # [1]
-# #     print(create(3)) # [2,1,3]
-# #     print(create(7)) # [2,4,6,1,5,3,7]
+    while circle:
+        if len(circle) == 1:
+            order.append(circle[0])
+            circle.pop()
+            break
+        i = 1
+        while i < len(circle):
+            order.append(circle[i])
+            circle.pop(i)
+            i += 1
+        else:
+            last_element_index = cir.index(order[-1])
+            element_suivant = cir[(last_element_index + 1) % len(cir)]
+        
+            if element_suivant in circle and element_suivant != circle[0]:
+                circle = [circle[-1]] + circle[:-1]
+
+
+    return order
+
+if __name__ == "__main__":
+    print(create(1)) # [1]
+    print(create(3)) # [2,1,3]
+    print(create(7)) # [2,4,6,1,5,3,7]
+    #print(create(4))
     
     
-n = 7
+# n = 7
 
-order = [] # sourcery skip
-circle = list(range(1,n+1))
-cir = circle.copy()
+# order = [] # sourcery skip
+# circle = list(range(1,n+1))
+# cir = circle.copy()
 
-while circle:
-    if len(circle) == 1:
-        order.append(circle[0])
-        circle.pop()
-        break
-    i = 1
-    while i < len(circle):
-        order.append(circle[i])
-        circle.pop(i)
-        i += 1
+# while circle:
+#     if len(circle) == 1:
+#         order.append(circle[0])
+#         circle.pop()
+#         break
+#     i = 1
+#     while i < len(circle):# sourcery skip
+#         order.append(circle[i])
+#         circle.pop(i)
+#         i += 1
 
-    else:
-        #print()
-        # trouver l'index de order[-1] dans cir
-        last_element_index = cir.index(order[-1])
-        # Trouver l'élément suivant 
-        element_suivant = cir[(last_element_index + 1) % len(cir)]
-        # si l'élément après le dernier nombre mis dans la liste order
-        # est dans la liste circle, mets le en 1e position et conserve le reste
-        # if element_suivant in circle:
-        #     new_circle = [circle[-1]] + circle[:-1]
-        # si l'élément après le dernier nombre mis dans la liste order
-        # n'est pas en 1e position dans la liste circle, mets le en 1e position et conserve le reste
-        if element_suivant in circle and element_suivant != circle[0]:
-            circle = [circle[-1]] + circle[:-1]
+#     else:
+#         #print()
+#         # trouver l'index de order[-1] dans cir
+#         last_element_index = cir.index(order[-1])
+#         # Trouver l'élément suivant 
+#         element_suivant = cir[(last_element_index + 1) % len(cir)]
+#         # si l'élément après le dernier nombre mis dans la liste order
+#         # est dans la liste circle, mets le en 1e position et conserve le reste
+#         # if element_suivant in circle:
+#         #     new_circle = [circle[-1]] + circle[:-1]
+#         # si l'élément après le dernier nombre mis dans la liste order
+#         # n'est pas en 1e position dans la liste circle, mets le en 1e position et conserve le reste
+#         if element_suivant in circle and element_suivant != circle[0]:
+#             circle = [circle[-1]] + circle[:-1]
     
     
 # print(order)
