@@ -50,17 +50,17 @@ while circle:
         #     new_circle = [circle[-1]] + circle[:-1]
         # si l'élément après le dernier nombre mis dans la liste order
         # n'est pas en 1e position dans la liste circle, mets le en 1e position et conserve le reste
-        if element_suivant != circle[0]:
+        if element_suivant in circle and element_suivant != circle[0]:
             circle = [circle[-1]] + circle[:-1]
     
     
-print(order)
-i = 1
-while i < len(circle):
-    order.append(circle[i])
-    circle.pop(i)
-    i += 1
-print()
+# print(order)
+# i = 1
+# while i < len(circle):
+#     order.append(circle[i])
+#     circle.pop(i)
+#     i += 1
+# print()
 
 # si ce n'est pas le cas, le 1er élément de cir devient l'élément 1 de circle
 # # else:
