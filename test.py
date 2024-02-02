@@ -24,3 +24,22 @@ while circle:
     
     
 print(order)
+
+# def best_profit(prices):
+#     n = len(prices)
+#     best = 0
+#     for i in range(n):
+#         for j in range(i + 1, n):
+#             best = max(best, prices[j] - prices[i])
+#     return best
+
+def best_profit(prices):
+    n = len(prices)
+    best = 0
+    for i in range(n):
+        min_price = min(prices[:i+1])
+        best = max(best, prices[i] - min_price)
+    return best
+
+prices = [3,7,5,1,4,6,2,3]
+print(best_profit(prices))
